@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="k8s常用命令 node 查看服务器节点 kubectl get nodes 查看服务器节点详情 kubectl get nodes -o wide 节点打标签 kubectl label nodes &lt;节点名称&gt; labelName&#x3D;&lt;标签名称&gt; 查看节点标签 kubectl get node –show-labels 删除节点标签 kubectl label">
+<meta property="og:type" content="article">
+<meta property="og:title" content="k8s-commond">
+<meta property="og:url" content="http://example.com/2022/09/26/k8s-commond/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="k8s常用命令 node 查看服务器节点 kubectl get nodes 查看服务器节点详情 kubectl get nodes -o wide 节点打标签 kubectl label nodes &lt;节点名称&gt; labelName&#x3D;&lt;标签名称&gt; 查看节点标签 kubectl get node –show-labels 删除节点标签 kubectl label">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-26T08:41:17.000Z">
+<meta property="article:modified_time" content="2022-10-04T04:20:47.537Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<title >k8s-commond</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=1.1.1' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=1.1.1' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+
+
+    
+
+    
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Sre"],"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"(/≧▽≦/)Hey! Good again!","hideText":"(●—●)Oh, crash!"},"theme_version":"1.1.1","theme":{"switch":true,"default":"style-light"},"search":{"enable":false,"type":"engine","href":"https://www.google.com/search?q=site:","domain":null},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated."},"creative_commons":{"license":"by-nc-sa","language":"deed.zh","post":false,"clipboard":false}};</script>
+
+<!-- Theme mode css -->
+
+    <link data-swup-theme="style-light" rel="stylesheet" href="/css/style-light.css?v=1.1.1" id="trm-switch-style">
+    <link data-swup-theme="style-dark" rel="stylesheet" href="/css/style-dark.css?v=1.1.1" id="trm-switch-style">
+    <script>
+        let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+        let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+        let themeMode = catchMode === 'style-dark' ? 'style-light' : 'style-dark';
+        let linkdom = document.querySelector('[data-swup-theme='+themeMode+']');
+        if(linkdom) linkdom.remove();
+    </script>
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" data-scroll-container style="opacity: 0">
+          <div data-scroll-section id="content" class="trm-scroll-section">
+
+            <div class="locomotive-scroll__sticky-target" style=" position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none;"></div>
+
+            <!-- top bar -->
+            <header class="trm-top-bar" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+			<a href="/" class="trm-logo-frame trm-anima-link">
+				
+					<img src="/img/favicon.svg" alt="logo">
+				
+				
+					<div class="trm-logo-text">
+						Tan<span>Eagle</span>
+					</div>
+				
+			</a>
+			<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+
+			<!-- menu -->
+			<div class="trm-menu">
+				<nav>
+					<ul>
+						
+						<li class="menu-item-has-children ">
+							<a  href="/" target="">
+								Home
+							</a>
+							
+						</li>
+						
+						<li class="menu-item-has-children ">
+							<a  href="/archives/" target="">
+								Archives
+							</a>
+							
+						</li>
+						
+					</ul>
+				</nav>
+			</div>
+			<!-- menu end -->
+			
+			<!-- mode switcher place -->
+			
+			<div class="trm-mode-switcher-place">
+				<!-- <div class="trm-hidden-switcher"> -->
+					<div class="trm-mode-switcher">
+					  <i class="far fa-sun"></i>
+					  <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+					  <label class="trm-swich" for="trm-swich"></label>
+					  <i class="far fa-moon"></i>
+					</div>
+				  <!-- </div> -->
+			</div>
+			
+			<!-- mode switcher place end -->
+
+			 
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner" data-scroll data-scroll-direction="vertical">
+    
+    <!-- banner cover -->
+    <img src="/img/banner.png" alt="banner" class="trm-banner-cover" data-scroll data-scroll-direction="vertical" data-scroll-speed="-3">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container" data-scroll data-scroll-direction="vertical" data-scroll-speed="0">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            k8s-commond
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2022
+                                    </span
+                                ></li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <a href="#about-triger" data-scroll-to="#about-triger" data-scroll-offset="-130" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </a>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card" data-scroll data-scroll-repeat data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="60"> 
+    
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20"><img class="trm-avatar" src="/img/avatar.jpg" alt="Avatar"> </div>
+    <h5 class="trm-name trm-mb-15">
+        Eaaagle!
+    </h5>
+    
+    <div class="trm-label">
+        I`m
+        <span class="trm-typed-text">
+            <!-- Words for theme.user.typedText -->
+        </span>
+    </div>
+    
+</div>
+<!-- card header end -->
+
+<!-- sidebar social -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
+    
+        <a href="https://twitter.com" title="Twitter" rel="nofollow" target="_blank">
+            <i class="fab fa-twitter"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+
+<!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Xixiang
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                ShangHai
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                23
+            </div>
+        </li>
+    
+</ul>
+
+<!-- info end -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<!-- action button -->
+<div class="text-center">
+    <a href="mailto:499058264@qq.com" class="trm-btn">
+        Contact Me
+        <i class="far fa-envelope"></i>
+    </a>
+</div>
+<!-- action button end -->
+
+    
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="col-lg-8">
+                <div class="trm-content" id="trm-content">
+                    <div data-scroll data-scroll-repeat data-scroll-offset="500" id="about-triger"></div>
+
+                    <div class="row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="far fa-calendar-alt trm-icon"></i><br>
+            09/26
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="far fa-clock trm-icon"></i><br>
+            04:41
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="far fa-user trm-icon"></i><br>
+            Eaaagle!
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article class="trm-publication">
+    <blockquote>
+<p>k8s常用命令</p>
+<p>node</p>
+<p>查看服务器节点 kubectl get nodes</p>
+<p>查看服务器节点详情 kubectl get nodes -o wide</p>
+<p>节点打标签 kubectl label nodes &lt;节点名称&gt; labelName&#x3D;&lt;标签名称&gt;</p>
+<p>查看节点标签 kubectl get node –show-labels</p>
+<p>删除节点标签 kubectl label node &lt;节点名称&gt; labelName-</p>
+<p>pod</p>
+<p>查看pod节点 kubectl get pod</p>
+<p>查看pod节点详情 kubectl get pod -o wide</p>
+<p>查看所有名称空间下的pod kubectl get pod –all-namespaces</p>
+<p>根据yaml文件创建pod kubectl apply -f &lt;文件名称&gt;</p>
+<p>根据yaml文件删除pod kubectl delete -f &lt;文件名称&gt;</p>
+<p>删除pod节点 kubectl delete pod &lt;pod名称&gt; -n &lt;名称空间&gt;</p>
+<p>查看异常的pod节点 kubectl get pods -n &lt;名称空间&gt; | grep -v Running</p>
+<p>查看异常pod节点的日志 kubectl describe pod &lt;pod名称&gt; -n &lt;名称空间&gt;</p>
+<p>svc</p>
+<p>查看服务 kubectl get svc</p>
+<p>查看服务详情 kubectl get svc -o wide</p>
+<p>查看所有名称空间下的服务 kubectl get svc –all-namespaces</p>
+<p>#查看所有namespace的pods运行情况</p>
+<p>kubectl get pods –all-namespaces</p>
+<p>#查看具体pods，记得后边跟namespace名字哦</p>
+<p>kubectl get pods kubernetes-dashboard-76479d66bb-nj8wr –namespace&#x3D;kube- system</p>
+<p>查看pods具体信息</p>
+<p>kubectl get pods -o wide kubernetes-dashboard-76479d66bb-nj8wr –namespace&#x3D;kube-system</p>
+<p>查看集群健康状态</p>
+<p>kubectl get cs</p>
+<p>获取所有deployment</p>
+<p>kubectl get deployment –all-namespaces</p>
+<p>查看kube-system namespace下面的pod&#x2F;svc&#x2F;deployment 等等（-o wide 选项可以查看存在哪个对应的节点）</p>
+<p>kubectl get pod &#x2F;svc&#x2F;deployment -n kube-system</p>
+<p>列出该 namespace 中的所有 pod 包括未初始化的</p>
+<p>kubectl get pods –include-uninitialized</p>
+<p>查看deployment()</p>
+<p>kubectl get deployment nginx-app</p>
+<p>查看rc和servers</p>
+<p>kubectl get rc,services</p>
+<p>查看pods结构信息（重点，通过这个看<a target="_blank" rel="noopener" href="https://cloud.tencent.com/product/es?from=10680">日志分析</a>错误）</p>
+<p>对控制器和服务，node同样有效</p>
+<p>kubectl describe pods xxxxpodsname –namespace&#x3D;xxxnamespace</p>
+<p>其他控制器类似吧，就是kubectl get 控制器 控制器具体名称</p>
+<p>查看pod日志</p>
+<p>kubectl logs $POD_NAME</p>
+<p>查看pod变量</p>
+<p>kubectl exec my-nginx-5j8ok – printenv | grep SERVICE</p>
+<p>集群</p>
+<p>kubectl get cs # 集群健康情况</p>
+<p>kubectl cluster-info # 集群核心组件运行情况</p>
+<p>kubectl get namespaces # 表空间名</p>
+<p>kubectl version # 版本</p>
+<p>kubectl api-versions # API</p>
+<p>kubectl get events # 查看事件</p>
+<p>kubectl get nodes &#x2F;&#x2F;获取全部节点</p>
+<p>kubectl delete node k8s2 &#x2F;&#x2F;删除节点</p>
+<p>kubectl rollout status deploy nginx-test</p>
+<p>kubectl get deployment –all-namespaces</p>
+<p>kubectl get svc –all-namespaces</p>
+<p>创建</p>
+<p>kubectl create -f .&#x2F;nginx.yaml # 创建资源</p>
+<p>kubectl apply -f xxx.yaml （创建+更新，可以重复使用）</p>
+<p>kubectl create -f . # 创建当前目录下的所有yaml资源</p>
+<p>kubectl create -f .&#x2F;nginx1.yaml -f .&#x2F;mysql2.yaml # 使用多个文件创建资源</p>
+<p>kubectl create -f .&#x2F;dir # 使用目录下的所有清单文件来创建资源</p>
+<p>kubectl create -f <a target="_blank" rel="noopener" href="https://git.io/vPieo">https://git.io/vPieo</a> # 使用 url 来创建资源</p>
+<p>kubectl run -i –tty busybox –image&#x3D;busybox —-创建带有终端的pod</p>
+<p>kubectl run nginx –image&#x3D;nginx # 启动一个 nginx 实例</p>
+<p>kubectl run mybusybox –image&#x3D;busybox –replicas&#x3D;5 —-启动多个pod</p>
+<p>kubectl explain pods,svc # 获取 pod 和 svc 的文档</p>
+<p>更新</p>
+<p>kubectl rolling-update python-v1 -f python-v2.json # 滚动更新 pod frontend-v1</p>
+<p>kubectl rolling-update python-v1 python-v2 –image&#x3D;image:v2 # 更新资源名称并更新镜像</p>
+<p>kubectl rolling-update python –image&#x3D;image:v2 # 更新 frontend pod 中的镜像</p>
+<p>kubectl rolling-update python-v1 python-v2 –rollback # 退出已存在的进行中的滚动更新</p>
+<p>cat pod.json | kubectl replace -f - # 基于 stdin 输入的 JSON 替换 pod</p>
+<p>为 nginx RC 创建服务，启用本地 80 端口连接到<a target="_blank" rel="noopener" href="https://cloud.tencent.com/product/tke?from=10680">容器</a>上的 8000 端口</p>
+<p>kubectl expose rc nginx –port&#x3D;80 –target-port&#x3D;8000</p>
+<p>更新单容器 pod 的镜像版本（tag）到 v4</p>
+<p>kubectl get pod nginx-pod -o yaml | sed ‘s&#x2F;(image: myimage):.*$&#x2F;\1:v4&#x2F;‘ | kubectl replace -f -</p>
+<p>kubectl label pods nginx-pod new-label&#x3D;awesome # 添加标签</p>
+<p>kubectl annotate pods nginx-pod icon-url&#x3D;<a target="_blank" rel="noopener" href="http://goo.gl/XXBTWq">http://goo.gl/XXBTWq</a> # 添加注解</p>
+<p>kubectl autoscale deployment foo –min&#x3D;2 –max&#x3D;10 # 自动扩展 deployment “foo”</p>
+<p>编辑资源</p>
+<p>kubectl edit svc&#x2F;docker-registry # 编辑名为 docker-registry 的 service</p>
+<p>KUBE_EDITOR&#x3D;”nano” kubectl edit svc&#x2F;docker-registry # 使用其它编辑器</p>
+<p>vim &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;kubelet.service.d&#x2F;10-kubeadm.conf #修改启动参数</p>
+<p>动态伸缩pod</p>
+<p>kubectl scale –replicas&#x3D;3 rs&#x2F;foo # 将foo副本集变成3个</p>
+<p>kubectl scale –replicas&#x3D;3 -f foo.yaml # 缩放“foo”中指定的资源。</p>
+<p>kubectl scale –current-replicas&#x3D;2 –replicas&#x3D;3 deployment&#x2F;mysql # 将deployment&#x2F;mysql从2个变成3个</p>
+<p>kubectl scale –replicas&#x3D;5 rc&#x2F;foo rc&#x2F;bar rc&#x2F;baz # 变更多个控制器的数量</p>
+<p>kubectl rollout status deploy deployment&#x2F;mysql # 查看变更进度</p>
+<p>#label 操作</p>
+<p>kubectl label：添加label值 kubectl label nodes node1 zone&#x3D;north #增加节点lable值 spec.nodeSelector: zone: north #指定pod在哪个节点</p>
+<p>kubectl label pod redis-master-1033017107-q47hh role&#x3D;master #增加lable值 key&#x3D;value</p>
+<p>kubectl label pod redis-master-1033017107-q47hh role- #删除lable值</p>
+<p>kubectl label pod redis-master-1033017107-q47hh role&#x3D;backend –overwrite #修改lable值</p>
+<p>滚动升级</p>
+<p>kubectl rolling-update：滚动升级 kubectl rolling-update redis-master -f redis- master-controller-v2.yaml #配置文件滚动升级</p>
+<p>kubectl rolling-update redis-master –image&#x3D;redis-master:2.0 #命令升级</p>
+<p>kubectl rolling-update redis-master –image&#x3D;redis-master:1.0 –rollback #pod版本回滚</p>
+<p>etcdctl 常用操作</p>
+<p>etcdctl cluster-health #检查网络集群健康状态</p>
+<p>etcdctl –endpoints&#x3D;<a target="_blank" rel="noopener" href="https://192.168.71.221:2379/">https://192.168.71.221:2379</a> cluster-health #带有安全认证检查网络集群健康状态</p>
+<p>etcdctl member list</p>
+<p>etcdctl set &#x2F;k8s&#x2F;network&#x2F;config ‘{ “Network”: “10.1.0.0&#x2F;16” }’</p>
+<p>etcdctl get &#x2F;k8s&#x2F;network&#x2F;config</p>
+<p>删除</p>
+<p>kubectl delete pod -l app&#x3D;flannel -n kube-system # 根据label删除：</p>
+<p>kubectl delete -f .&#x2F;pod.json # 删除 pod.json 文件中定义的类型和名称的 pod</p>
+<p>kubectl delete pod,service baz foo # 删除名为“baz”的 pod 和名为“foo”的 service</p>
+<p>kubectl delete pods,services -l name&#x3D;myLabel # 删除具有 name&#x3D;myLabel 标签的 pod 和 serivce</p>
+<p>kubectl delete pods,services -l name&#x3D;myLabel –include-uninitialized # 删除具有 name&#x3D;myLabel 标签的 pod 和 service，包括尚未初始化的</p>
+<p>kubectl -n my-ns delete po,svc –all # 删除 my-ns namespace下的所有 pod 和 serivce，包括尚未初始化的</p>
+<p>kubectl delete pods prometheus-7fcfcb9f89-qkkf7 –grace-period&#x3D;0 –force 强制删除</p>
+<p>kubectl delete deployment kubernetes-dashboard –namespace&#x3D;kube-system</p>
+<p>kubectl delete svc kubernetes-dashboard –namespace&#x3D;kube-system</p>
+<p>kubectl delete -f kubernetes-dashboard.yaml</p>
+<p>kubectl replace –force -f .&#x2F;pod.json # 强制替换，删除后重新创建资源。会导致服务中断。</p>
+<p>交互</p>
+<p>kubectl logs nginx-pod # dump 输出 pod 的日志（stdout）</p>
+<p>kubectl logs nginx-pod -c my-container # dump 输出 pod 中容器的日志（stdout，pod 中有多个容器的情况下使用）</p>
+<p>kubectl logs -f nginx-pod # 流式输出 pod 的日志（stdout）</p>
+<p>kubectl logs -f nginx-pod -c my-container # 流式输出 pod 中容器的日志（stdout，pod 中有多个容器的情况下使用）</p>
+<p>kubectl run -i –tty busybox –image&#x3D;busybox – sh # 交互式 shell 的方式运行 pod</p>
+<p>kubectl attach nginx-pod -i # 连接到运行中的容器</p>
+<p>kubectl port-forward nginx-pod 5000:6000 # 转发 pod 中的 6000 端口到本地的 5000 端口</p>
+<p>kubectl exec nginx-pod – ls &#x2F; # 在已存在的容器中执行命令（只有一个容器的情况下）</p>
+<p>kubectl exec nginx-pod -c my-container – ls &#x2F; # 在已存在的容器中执行命令（pod 中有多个容器的情况下）</p>
+<p>kubectl top pod POD_NAME –containers # 显示指定 pod和容器的指标度量</p>
+<p>kubectl exec -ti podName &#x2F;bin&#x2F;bash # 进入pod</p>
+<p>调度配置</p>
+<p>kubectl cordon k8s-node # 标记 my-node 不可调度</p>
+<p>kubectl drain k8s-node # 清空 my-node 以待维护</p>
+<p>kubectl uncordon k8s-node # 标记 my-node 可调度</p>
+<p>kubectl top node k8s-node # 显示 my-node 的指标度量</p>
+<p>kubectl cluster-info dump # 将当前集群状态输出到 stdout</p>
+<p>kubectl cluster-info dump –output-directory&#x3D;&#x2F;path&#x2F;to&#x2F;cluster-state # 将当前集群状态输出到 &#x2F;path&#x2F;to&#x2F;cluster-state</p>
+<p>#如果该键和影响的污点（taint）已存在，则使用指定的值替换</p>
+<p>kubectl taint nodes foo dedicated&#x3D;special-user:NoSchedule</p>
+<p>#查看kubelet进程启动参数</p>
+<p>ps -ef | grep kubelet</p>
+<p>查看日志:</p>
+<p>journalctl -u kubelet -f</p>
+<p>导出配置文件：</p>
+<p>导出proxy</p>
+<p>kubectl get ds -n kube-system -l k8s-app&#x3D;kube-proxy -o yaml&gt;kube-proxy- ds.yaml</p>
+<p>导出kube-dns</p>
+<p>kubectl get deployment -n kube-system -l k8s-app&#x3D;kube-dns -o yaml &gt;kube-dns- dp.yaml</p>
+<p>kubectl get services -n kube-system -l k8s-app&#x3D;kube-dns -o yaml &gt;kube-dns- services.yaml</p>
+<p>导出所有 configmap</p>
+<p>kubectl get configmap -n kube-system -o wide -o yaml &gt; configmap.yaml</p>
+<p>复杂操作命令：</p>
+<p>删除kube-system 下Evicted状态的所有pod：</p>
+<p>kubectl get pods -n kube-system |grep Evicted| awk ‘{print $1}’|xargs kubectl delete pod -n kube-system</p>
+<p>以下为维护环境相关命令：</p>
+<p>重启kubelet服务</p>
+<p>systemctl daemon-reload</p>
+<p>systemctl restart kubelet</p>
+</blockquote>
+
+</article>
+    
+    
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-mb-40 trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+        <a href="/2022/10/04/%E6%A2%85%E8%8A%B1%E6%98%93%E6%95%B0/" class="trm-cover-frame trm-anima-link">
+            <img src="/img/block.jpg" alt="cover">
+        </a>
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" #.">
+                    Unclassified
+                </a>
+            </div>
+            <h5>
+                <a href="/2022/10/04/%E6%A2%85%E8%8A%B1%E6%98%93%E6%95%B0/" class="trm-anima-link">
+                    周易卦数
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>22/10/04</li>
+                <li>12:49</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+        <a href="/2022/09/25/hello-world/" class="trm-cover-frame trm-anima-link">
+            <img src="/img/block.jpg" alt="cover">
+        </a>
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" #.">
+                    Unclassified
+                </a>
+            </div>
+            <h5>
+                <a href="/2022/09/25/hello-world/" class="trm-anima-link">
+                    Hello World
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>22/09/25</li>
+                <li>10:46</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+
+                    <div class="trm-divider trm-mb-40"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation" data-scroll data-scroll-offset="50">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v6.3.0
+            </span>
+            <span class="footer-separator"> | </span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v1.1.1
+            </span>
+        </div>
+      
+
+     
+
+     
+</footer>
+ 
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+          </div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+
+  </div>
+  <!-- app wrapper end -->
+
+  <div id="trm-back-top" class="trm-back-top">
+    <i class="fas fa-arrow-up"></i>
+</div>
+  
+  <!-- Plugin -->
+
+
+
+
+    
+<script src="//cdn.jsdelivr.net/npm/swup@2.0.19/dist/swup.min.js"></script>
+
+    
+<script src="//cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+    
+<script src="//cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=1.1.1"></script>
+    
+
+    
+
+    
+
+
+
+<!-- 评论插件 -->
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=1.1.1"></script>
+
+</body>
+
+</html>
