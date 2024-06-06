@@ -75,4 +75,19 @@
 <p><img src="https://raw.githubusercontent.com/tanzhiwei233/picture/master/images/image-20240603162116578.png" alt="image-20240603162116578"></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>hero + github</title>
+    <url>/2024/06/06/hexo%20+%20github/</url>
+    <content><![CDATA[<h2 id="新建一个仓库"><a href="#新建一个仓库" class="headerlink" title="新建一个仓库"></a>新建一个仓库</h2><p>名字为用户名+.github.io</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tanzhiwei233.github.io</span><br></pre></td></tr></table></figure>
+
+<h2 id="上传-hexo-程序到-GitHub"><a href="#上传-hexo-程序到-GitHub" class="headerlink" title="上传 hexo 程序到 GitHub"></a>上传 hexo 程序到 GitHub</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>然后修改_config.yml 文件末尾的 Deployment 部分：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:xxxx/xxxx.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>Hero d 将页面推到github上，打开GitHub 仓库的page设置</p>
+<p><img src="https://raw.githubusercontent.com/tanzhiwei233/picture/master/images/image-20240606165606388.png" alt="image-20240606165606388"></p>
+]]></content>
+  </entry>
 </search>
