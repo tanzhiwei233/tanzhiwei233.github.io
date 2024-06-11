@@ -438,7 +438,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-06-11 17:09:31" itemprop="dateModified" datetime="2024-06-11T17:09:31+08:00">2024-06-11</time>
+                <time title="Modified: 2024-06-11 17:13:01" itemprop="dateModified" datetime="2024-06-11T17:13:01+08:00">2024-06-11</time>
               </span>
 
           
@@ -468,14 +468,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>7k</span>
+              <span>7.2k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>6 mins.</span>
+              <span>7 mins.</span>
             </span>
 
         </div>
@@ -525,8 +525,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:stevenjoezhang/live2d-widget.git</span><br></pre></td></tr></table></figure>
 <p>在主题目录的layout文件夹中找到head文件(_layout.swig)并在其中添加代码script</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  &#123;&#123; partial(&#x27;_partials/head/head.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line">  &#123;% include &#x27;_partials/head/head-unique.swig&#x27; %&#125;</span><br><span class="line">  &#123;&#123;- next_inject(&#x27;head&#x27;) &#125;&#125;</span><br><span class="line">  &lt;title&gt;&#123;% block title %&#125;&#123;% endblock %&#125;&lt;/title&gt;</span><br><span class="line">  &#123;&#123; partial(&#x27;_third-party/analytics/index.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line">  &#123;&#123; partial(&#x27;_scripts/noscript.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line">  &lt;script src=&quot;/live2d-widget/autoload.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
-
-
+<p>修改看板娘代码的autoload.js</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const live2d_path = &quot;/live2d-widget/&quot;;</span><br><span class="line">cdnPath: &quot;https://gcore.jsdelivr.net/npm/yzs-live2d_src@1.1.0/&quot;,</span><br></pre></td></tr></table></figure>
 
       
     </div>
