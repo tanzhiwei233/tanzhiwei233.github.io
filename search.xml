@@ -22,7 +22,7 @@
       </tags>
   </entry>
   <entry>
-    <title>hero + github</title>
+    <title>将hexo使用github托管</title>
     <url>/2024/06/06/hexo%20+%20github/</url>
     <content><![CDATA[<h2 id="新建一个仓库"><a href="#新建一个仓库" class="headerlink" title="新建一个仓库"></a>新建一个仓库</h2><p>名字为用户名+.github.io</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tanzhiwei233.github.io</span><br></pre></td></tr></table></figure>
