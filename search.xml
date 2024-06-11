@@ -17,6 +17,9 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title>hero installation and beautify</title>
@@ -55,7 +58,16 @@
 <p>修改主题配置文件的 symbols_count_time 部分</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">separated_meta: true</span><br><span class="line">item_text_post: true # 文章字数统计</span><br><span class="line">item_text_total: true # 站点总字数统计</span><br><span class="line"># 平均单词长度（单词的计数）。默认值:4。CN≈2 EN≈5 俄文≈6</span><br><span class="line">awl: 2</span><br><span class="line"># 每分钟的单词。默认值:275。缓慢≈200 正常≈275 快≈350</span><br><span class="line">wpm: 275</span><br></pre></td></tr></table></figure>
 
-<h2 id="在菜单栏添加留言板"><a href="#在菜单栏添加留言板" class="headerlink" title="在菜单栏添加留言板"></a>在菜单栏添加留言板</h2>]]></content>
+<h2 id="在菜单栏添加留言板"><a href="#在菜单栏添加留言板" class="headerlink" title="在菜单栏添加留言板"></a>在菜单栏添加留言板</h2><h2 id="添加2d看板娘"><a href="#添加2d看板娘" class="headerlink" title="添加2d看板娘"></a>添加2d看板娘</h2><p>git clone拷贝到主题的source目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com:stevenjoezhang/live2d-widget.git</span><br></pre></td></tr></table></figure>
+<p>在主题目录的layout文件夹中找到head文件(_layout.swig)并在其中添加代码script</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  &#123;&#123; partial(&#x27;_partials/head/head.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line">  &#123;% include &#x27;_partials/head/head-unique.swig&#x27; %&#125;</span><br><span class="line">  &#123;&#123;- next_inject(&#x27;head&#x27;) &#125;&#125;</span><br><span class="line">  &lt;title&gt;&#123;% block title %&#125;&#123;% endblock %&#125;&lt;/title&gt;</span><br><span class="line">  &#123;&#123; partial(&#x27;_third-party/analytics/index.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line">  &#123;&#123; partial(&#x27;_scripts/noscript.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line">  &lt;script src=&quot;/live2d-widget/autoload.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title>typora picture upload —— PicGo</title>
@@ -74,6 +86,9 @@
 
 <p><img src="https://raw.githubusercontent.com/tanzhiwei233/picture/master/images/image-20240603162116578.png" alt="image-20240603162116578"></p>
 ]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title>hero + github</title>
@@ -89,5 +104,8 @@
 <p>Hero d 将页面推到github上，打开GitHub 仓库的page设置</p>
 <p><img src="https://raw.githubusercontent.com/tanzhiwei233/picture/master/images/image-20240606165606388.png" alt="image-20240606165606388"></p>
 ]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
 </search>
