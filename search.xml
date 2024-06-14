@@ -40,27 +40,6 @@
       </tags>
   </entry>
   <entry>
-    <title>typora picture upload —— PicGo</title>
-    <url>/2024/06/03/install%20PicGo/</url>
-    <content><![CDATA[<p>下载：<a href="https://github.com/Molunerfinn/picgo/releases">https://github.com/Molunerfinn/picgo/releases</a></p>
-<p>issue：macOS系统安装完PicGo显示「文件已损坏」或者安装完打开没有反应</p>
-<p>因为 PicGo 没有签名，所以会被 macOS 的安全检查所拦下。</p>
-<ol>
-<li>安装后打开遇到「文件已损坏」的情况，请按如下方式操作：</li>
-</ol>
-<p>信任开发者，会要求输入密码:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo spctl --master-disable</span><br></pre></td></tr></table></figure>
-
-<p>然后放行 PicGo :</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">xattr -cr /Applications/PicGo.app</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/tanzhiwei233/picture/master/images/image-20240603162116578.png" alt="image-20240603162116578"></p>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hero installation and beautify</title>
     <url>/2024/05/31/hexo%20init/</url>
     <content><![CDATA[<h2 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br><span class="line">$ brew install hexo</span><br><span class="line">$ hexo init blog</span><br><span class="line">$ cd blog</span><br><span class="line">$ hexo server</span><br><span class="line">$ hexo new &quot;Hello Hexo&quot;</span><br><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
@@ -109,6 +88,27 @@
 <p>将外链加在next&#x2F;layout&#x2F;_macro&#x2F;sidebar.swig</p>
 <h2 id="添加背景图片"><a href="#添加背景图片" class="headerlink" title="添加背景图片"></a>添加背景图片</h2><p>将自己的背景图片命名为background.png保存在\themes\next\source\images路径下<br>进入路径\themes\next\source\css_schemes可见其中有四个主题文件<br>选择你自己的主题，本文以Gemini为例，打开index.styl<br>复制下列代码。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 整体背景设置</span><br><span class="line">body &#123;</span><br><span class="line">background:url(/images/background.png);// 设定背景图片,images同处于source文件夹下</span><br><span class="line">background-repeat: no-repeat;// 设定背景图片非重复填充</span><br><span class="line">background-attachment:fixed;// 设置背景图片不随页面滚动</span><br><span class="line">background-position:50% 50%;// 设置背景图片位置</span><br><span class="line">background-size: cover// 设置保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//博客内容透明化</span><br><span class="line">//文章内容的透明度设置</span><br><span class="line">.content-wrap &#123;</span><br><span class="line">opacity: 0.8;</span><br><span class="line">&#125;</span><br><span class="line">.main-inner &#123;</span><br><span class="line">// margin-top: 60px;</span><br><span class="line">// padding: 60px 60px 60px 60px;</span><br><span class="line"></span><br><span class="line">background: rgba(255,255,255,0.7) none repeat scroll !important;</span><br><span class="line">&#125;</span><br><span class="line">//侧边框的透明度设置</span><br><span class="line">.sidebar-inner &#123;</span><br><span class="line">background: rgba(255,255,255,0.7) none repeat scroll !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//菜单栏的透明度设置</span><br><span class="line">.header-inner &#123;</span><br><span class="line">background: rgba(255,255,255,0.8);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//搜索框（local-search）的透明度设置</span><br><span class="line">.popup &#123;</span><br><span class="line">opacity: 0.8;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>typora picture upload —— PicGo</title>
+    <url>/2024/06/03/install%20PicGo/</url>
+    <content><![CDATA[<p>下载：<a href="https://github.com/Molunerfinn/picgo/releases">https://github.com/Molunerfinn/picgo/releases</a></p>
+<p>issue：macOS系统安装完PicGo显示「文件已损坏」或者安装完打开没有反应</p>
+<p>因为 PicGo 没有签名，所以会被 macOS 的安全检查所拦下。</p>
+<ol>
+<li>安装后打开遇到「文件已损坏」的情况，请按如下方式操作：</li>
+</ol>
+<p>信任开发者，会要求输入密码:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo spctl --master-disable</span><br></pre></td></tr></table></figure>
+
+<p>然后放行 PicGo :</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">xattr -cr /Applications/PicGo.app</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/tanzhiwei233/picture/master/images/image-20240603162116578.png" alt="image-20240603162116578"></p>
+]]></content>
       <tags>
         <tag>hexo</tag>
       </tags>
