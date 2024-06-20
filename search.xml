@@ -22,24 +22,6 @@
       </tags>
   </entry>
   <entry>
-    <title>将hexo使用github托管</title>
-    <url>/2024/06/06/hexo%20+%20github/</url>
-    <content><![CDATA[<h2 id="新建一个仓库"><a href="#新建一个仓库" class="headerlink" title="新建一个仓库"></a>新建一个仓库</h2><p>名字为用户名+.github.io</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tanzhiwei233.github.io</span><br></pre></td></tr></table></figure>
-
-<h2 id="上传-hexo-程序到-GitHub"><a href="#上传-hexo-程序到-GitHub" class="headerlink" title="上传 hexo 程序到 GitHub"></a>上传 hexo 程序到 GitHub</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>然后修改_config.yml 文件末尾的 Deployment 部分：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:xxxx/xxxx.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<p>Hero d 将页面推到github上，打开GitHub 仓库的page设置</p>
-<p><img src="https://raw.githubusercontent.com/tanzhiwei233/picture/master/images/image-20240606165606388.png" alt="image-20240606165606388"></p>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hero installation and beautify</title>
     <url>/2024/05/31/hexo%20init/</url>
     <content><![CDATA[<h2 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br><span class="line">$ brew install hexo</span><br><span class="line">$ hexo init blog</span><br><span class="line">$ cd blog</span><br><span class="line">$ hexo server</span><br><span class="line">$ hexo new &quot;Hello Hexo&quot;</span><br><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
@@ -107,10 +89,42 @@
 <p>然后放行 PicGo :</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">xattr -cr /Applications/PicGo.app</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://raw.githubusercontent.com/tanzhiwei233/picture/master/images/image-20240603162116578.png" alt="image-20240603162116578"></p>
+<p><img data-src="https://raw.githubusercontent.com/tanzhiwei233/picture/master/images/image-20240603162116578.png" alt="image-20240603162116578"></p>
 ]]></content>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>将hexo使用github托管</title>
+    <url>/2024/06/06/hexo%20+%20github/</url>
+    <content><![CDATA[<h2 id="新建一个仓库"><a href="#新建一个仓库" class="headerlink" title="新建一个仓库"></a>新建一个仓库</h2><p>名字为用户名+.github.io</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tanzhiwei233.github.io</span><br></pre></td></tr></table></figure>
+
+<h2 id="上传-hexo-程序到-GitHub"><a href="#上传-hexo-程序到-GitHub" class="headerlink" title="上传 hexo 程序到 GitHub"></a>上传 hexo 程序到 GitHub</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>然后修改_config.yml 文件末尾的 Deployment 部分：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:xxxx/xxxx.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>Hero d 将页面推到github上，打开GitHub 仓库的page设置</p>
+<p><img data-src="https://raw.githubusercontent.com/tanzhiwei233/picture/master/images/image-20240606165606388.png" alt="image-20240606165606388"></p>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>重庆小火锅</title>
+    <url>/2024/06/17/%E9%87%8D%E5%BA%86%E5%B0%8F%E7%81%AB%E9%94%85/</url>
+    <content><![CDATA[<p><img data-src="https://raw.githubusercontent.com/tanzhiwei233/picture/master/images/image-20240617171516646.png" alt="image-20240617171516646"></p>
+<p>周六考完四级后，去钟楼吃重庆小火锅，剩了很多菜，花了160！</p>
+<p><img data-src="https://raw.githubusercontent.com/tanzhiwei233/picture/master/images/image-20240617171925441.png" alt="image-20240617171925441"></p>
+<p>回家买了两杯奶茶，一杯是冰沙（茶百道）</p>
+<p>晚上回家去超市买了半个西瓜，两瓶维C，一瓶江小白（没拍照）</p>
+<p>晚上回家之后，和伙计打王者，连输，有一把她玩小乔，在中路回城要回不回的。说了一下不好听的被记仇，晚上一直掐我。。。（第二天记忆有点模糊，感觉是喝醉了）</p>
+]]></content>
+      <tags>
+        <tag>日记</tag>
       </tags>
   </entry>
 </search>
